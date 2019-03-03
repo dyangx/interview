@@ -11,7 +11,7 @@ public class Test extends Base{
         new Test();
         VO v = new VO("a","b");
         System.out.println(JSONObject.toJSON(v));
-        InputStream i = new ByteArrayInputStream(v);
+//        InputStream i = new ByteArrayInputStream(v);
     }
 
 }
