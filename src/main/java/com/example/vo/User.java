@@ -10,6 +10,8 @@ public class User implements Serializable {
 
     private String age;
 
+    private String eage;
+
     public User() {
     }
 
@@ -17,6 +19,14 @@ public class User implements Serializable {
         this.id = id;
         this.name = name;
         this.age = age;
+    }
+
+    public String getEage() {
+        return eage;
+    }
+
+    public void setEage(String eage) {
+        this.eage = eage;
     }
 
     public String getId() {
@@ -49,6 +59,7 @@ public class User implements Serializable {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", age='" + age + '\'' +
+                ", eage='" + eage + '\'' +
                 '}';
     }
 }
