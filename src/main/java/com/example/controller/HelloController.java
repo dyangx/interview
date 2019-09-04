@@ -7,6 +7,7 @@ import com.example.aop.service.UserService;
 import com.example.utils.ExcelUtil;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,12 +24,20 @@ public class HelloController {
 
     @Autowired
     UserService userService;
+    @Value("${server.port}")
+    private String port;
 
     @ResponseBody
     @RequestMapping("/user.json")
     public User user(){
         User u = new User("1","张三","25");
         return userService.printUser(u);
+    }
+
+    @ResponseBody
+    @RequestMapping("/getPort.json")
+    public String getPort(){
+        return "Hello, I am is "+port;
     }
 
     @RequestMapping("/export")

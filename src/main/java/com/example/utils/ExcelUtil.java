@@ -27,7 +27,9 @@ import java.net.URLEncoder;
 import java.util.*;
 
 /** excel 导入出工具
- * Created by DaveYang on 2018/8/25.
+ *
+ * @author DaveYang
+ * @date 2018/8/25
  */
 public class ExcelUtil {
     public static void exportExcel(List<?> list, String title, String sheetName, Class<?> pojoClass, String fileName,
@@ -58,7 +60,7 @@ public class ExcelUtil {
         workbook.write(response.getOutputStream());
     }
     private static void defaultExport(List<Map<String, Object>> list, String fileName, HttpServletResponse response) throws IOException {
-//        Workbook workbook = ExcelExportUtil.exportExcel(list, ExcelType.HSSF);
+////        Workbook workbook = ExcelExportUtil.exportExcel(list, ExcelType.HSSF);
         List<ExcelExportEntity> l = new ArrayList<>();
         l.add(new ExcelExportEntity("id"));
         l.add(new ExcelExportEntity("name"));

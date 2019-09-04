@@ -6,6 +6,8 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
+    private Integer height;
+
     @Excel(name = "id")
     private String id;
 
@@ -25,6 +27,14 @@ public class User implements Serializable {
         this.id = id;
         this.name = name;
         this.age = age;
+    }
+
+    public Integer getHeight() {
+        return height;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 
     public String getEage() {
