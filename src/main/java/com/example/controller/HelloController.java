@@ -52,7 +52,6 @@ public class HelloController {
 
     @RequestMapping("/export2")
     public void export2(HttpServletResponse response) throws IOException {
-
         User user = new User("1","2","3");
         Map<String,Object> map = JSONObject.parseObject(JSON.toJSONString(user));
         List<Map<String,Object>> userList = new ArrayList<>();
@@ -61,4 +60,6 @@ public class HelloController {
 //        ExcelUtil.exportExcel(userList,"ss.xls", response);
         ExcelUtil.exportExcel(userList,"ss.xls", response);
     }
+
+
 }

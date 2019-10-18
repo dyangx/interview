@@ -10,6 +10,7 @@ import org.springframework.context.ApplicationContext;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.util.LinkedHashSet;
 
 public class JunitTest {
 
@@ -72,5 +73,18 @@ public class JunitTest {
         sb.delete(in,inn);
         System.out.println(sb.toString());
         System.out.println(in);
+    }
+
+    @Test
+    public void te7(){
+        LinkedHashSet<String> set = new LinkedHashSet<>(2000000);
+        set.add("2");
+        set.add("3");
+        set.add("2");
+        set.add("1");
+        for (String s : set){
+            System.out.println(s);;
+        }
+        System.out.println(set);
     }
 }
