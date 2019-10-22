@@ -4,6 +4,7 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
+import com.example.service.TesetService;
 import com.example.utils.ExcelUtil;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class HelloController {
     UserService userService;
     @Value("${server.port}")
     private String port;
+
+    @Autowired
+    TesetService tesetService;
+
 
     @ResponseBody
     @RequestMapping("/user.json")
@@ -61,5 +66,28 @@ public class HelloController {
         ExcelUtil.exportExcel(userList,"ss.xls", response);
     }
 
+    @ResponseBody
+    @RequestMapping("/getuser")
+    public Object getuser(){
+        return tesetService.getUser();
+    }
 
+    @ResponseBody
+    @RequestMapping("/insert")
+    public Object insert(){
+        return tesetService.insert();
+    }
+
+    @ResponseBody
+    @RequestMapping("/insertBatch")
+    public Object insertBatch(){
+        String s1 = tesetService.insert() + "----";
+        String s2 = tesetService.insertBatch(false)+ "----";
+        String s3 = tesetService.insertBatch(true)+ "-----";
+        String s4 = tesetService.insertBatchSession(false)+ "-----";
+        String s5 = tesetService.insertBatchSession(true)+ "-----";
+        String s6 = tesetService.insertBatchSessionF(false)+ "-----";
+        String s7 = tesetService.insertBatchSessionF(true)+ "-----";
+        return s1 + s2 + s3 + s4 + s5+s6+s7;
+    }
 }

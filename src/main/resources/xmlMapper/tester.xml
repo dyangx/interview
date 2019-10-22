@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace= "com.example.mapper.TesterMapper" >
+
+
+    <select id = "getUser" resultType="com.example.vo.Usr">
+        select * from usr
+    </select>
+    <insert id="insertUsr">
+        INSERT into usr(id,name,age,birth,phone,oder) values(#{id},#{name},2020,now(),'123456789',100)
+    </insert>
+</mapper>
