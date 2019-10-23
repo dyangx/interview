@@ -1,5 +1,6 @@
 package com.example.vo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
  * @date: Created in 2019/10/18 14:55
  */
 @Data
+@AllArgsConstructor
 public class Usr {
 
     private String id;

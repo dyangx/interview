@@ -12,7 +12,7 @@ import java.util.List;
  * @date: Created in 2019/10/18 14:53
  */
 
-
+@Repository
 public interface TesterMapper {
 //    @Select("select")
     List<Usr> getUser();

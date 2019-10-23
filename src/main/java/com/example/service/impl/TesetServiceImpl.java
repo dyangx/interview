@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -40,7 +42,7 @@ public class TesetServiceImpl implements TesetService {
     @Override
     public String insert() {
         long s = System.currentTimeMillis();
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
             testerMapper.insertUsr(id,"MrYang"+i);
         }
@@ -55,9 +57,10 @@ public class TesetServiceImpl implements TesetService {
         long s = System.currentTimeMillis();
         SqlSession sqlSession = sqlSessionFactory.openSession(b);
         TesterMapper mapper = sqlSession.getMapper(TesterMapper.class);
-        for(int i=0;i<10;i++){
+        for(int i=0;i<20;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
-            mapper.insertUsr(id,"MMMrYangBA"+i);
+            mapper.insertUsr(id,"BBBBBB"+i);
+//            if (i == 10) throw new RuntimeException();
         }
 //        sqlSession.commit();
         sqlSession.flushStatements();
@@ -73,9 +76,11 @@ public class TesetServiceImpl implements TesetService {
         long s = System.currentTimeMillis();
         SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH,b);
         TesterMapper mapper = sqlSession.getMapper(TesterMapper.class);
-        for(int i=40;i<50;i++){
+        for(int i=40;i<60;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
-            mapper.insertUsr(id,"MMMrYangBA"+i);
+            testerMapper.insertUsr(id,"AAAAAAA"+i);
+//            mapper.insertUsr(id,"AAAAAAA"+i);
+            if (i == 50) throw new RuntimeException();
         }
 //        sqlSession.commit();
         sqlSession.flushStatements();
@@ -90,10 +95,10 @@ public class TesetServiceImpl implements TesetService {
         long s = System.currentTimeMillis();
         SqlSession sqlSession = sqlSessionFactory.openSession(ExecutorType.BATCH,b);
         TesterMapper mapper = sqlSession.getMapper(TesterMapper.class);
-        for(int i=50;i<60;i++){
+        List<Usr> list = new ArrayList<>();
+        for(int i=50;i<70;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
-            String ss = "INSERT into usr(id,name,age,birth,phone,oder) values('"+id+"',"+"'BMB'"+",2020,'2010-10-10 12:12:12','123456789',100)";
-//            sqlSession.insert(ss);
+            list.add(new Usr(id,"dyangx"+i,i,1,new Date(),new Date(),"123456789"));
         }
         sqlSession.flushStatements();
         sqlSession.close();
