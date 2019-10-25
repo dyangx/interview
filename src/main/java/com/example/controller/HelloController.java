@@ -4,11 +4,13 @@ import cn.afterturn.easypoi.excel.annotation.Excel;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
+import com.example.config.PropertiesBean;
 import com.example.service.TesetService;
 import com.example.utils.ExcelUtil;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,6 +33,8 @@ public class HelloController {
     @Autowired
     TesetService tesetService;
 
+    @Autowired
+    PropertiesBean propertiesBean;
 
     @ResponseBody
     @RequestMapping("/user.json")
@@ -89,5 +93,13 @@ public class HelloController {
         String s6 = tesetService.insertBatchSessionF(false)+ "-----insertBatchSessionF\n";
         String s7 = tesetService.insertBatchSessionF(true)+ "-----insertBatchSessionF\n";
         return s1 + s2 + s3 + s4 + s5+s6+s7;
+    }
+
+    @ResponseBody
+    @RequestMapping("/getPropertiesBean")
+    public Object getPropertiesBean(){
+        Environment e = propertiesBean.getEnvironment();
+        System.out.println(e);
+        return e;
     }
 }
