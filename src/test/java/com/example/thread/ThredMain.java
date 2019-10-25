@@ -1,5 +1,7 @@
 package com.example.thread;
 
+import java.util.List;
+
 /**
  * @author: yangjie
  * @date: Created in 2019/10/24 16:45
@@ -33,6 +35,7 @@ public class ThredMain {
         t1.start();
         t2.start();
         t3.start();
+
     }
 
 }
