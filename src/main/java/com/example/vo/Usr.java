@@ -24,4 +24,17 @@ public class Usr {
     private Date tbirth;
     private String phone;
 
+    public Usr() {
+    }
+
+    public Usr(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public static Usr crate(){
+        Usr usr = new Usr("111111","name_name",100,10,new Date(),new Date(),"123456789");
+        return usr;
+    }
+
 }
