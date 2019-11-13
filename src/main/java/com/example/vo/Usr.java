@@ -1,7 +1,9 @@
 package com.example.vo;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
@@ -11,6 +13,8 @@ import java.util.Date;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Usr {
 
     private String id;
@@ -23,9 +27,6 @@ public class Usr {
     private Date birth;
     private Date tbirth;
     private String phone;
-
-    public Usr() {
-    }
 
     public Usr(String id, String name) {
         this.id = id;
