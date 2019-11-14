@@ -98,7 +98,7 @@ public class TesetServiceImpl implements TesetService {
         List<Usr> list = new ArrayList<>();
         for(int i=50;i<70;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
-            list.add(new Usr(id,"dyangx"+i,i,1,new Date(),new Date(),"123456789"));
+            list.add(new Usr(null,id,"dyangx"+i,i,1,new Date(),new Date(),"123456789"));
         }
         sqlSession.flushStatements();
         sqlSession.close();

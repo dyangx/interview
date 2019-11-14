@@ -1,7 +1,6 @@
 package com.example.vo;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.*;
 
 import java.util.Date;
 
@@ -11,7 +10,11 @@ import java.util.Date;
  */
 @Data
 @AllArgsConstructor
+@ToString
+@NoArgsConstructor
+@Builder
 public class Usr {
+    private Usr usr;
 
     private String id;
 
@@ -24,16 +27,13 @@ public class Usr {
     private Date tbirth;
     private String phone;
 
-    public Usr() {
-    }
-
     public Usr(String id, String name) {
         this.id = id;
         this.name = name;
     }
 
     public static Usr crate(){
-        Usr usr = new Usr("111111","name_name",100,10,new Date(),new Date(),"123456789");
+        Usr usr = new Usr(null,"111111","name_name",100,10,new Date(),new Date(),"123456789");
         return usr;
     }
 
