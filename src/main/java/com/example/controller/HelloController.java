@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -101,5 +102,13 @@ public class HelloController {
         Environment e = propertiesBean.getEnvironment();
         System.out.println(e);
         return e;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getfor",consumes="application/json")
+    public Object getfor(@RequestBody User u){
+        JSONObject o = u.getO();
+        User user = o.toJavaObject(User.class);
+        return user;
     }
 }

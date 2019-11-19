@@ -1,6 +1,5 @@
 package com.example.sunJDK;
 
-import com.example.vo.User;
 import com.example.vo.Usr;
 
 public class JPS {
@@ -17,7 +16,8 @@ public class JPS {
             u.builder().name("yangjie").age(x++).build();
             Thread.sleep(2000);
             System.out.print(u);
-            byte[] b = new byte[1024*1024*50];
+            final byte[] b = new byte[1024*1024*50];
+
             System.out.println(b);
         }
     }

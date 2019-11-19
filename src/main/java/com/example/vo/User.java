@@ -1,9 +1,12 @@
 package com.example.vo;
 
 import cn.afterturn.easypoi.excel.annotation.Excel;
+import com.alibaba.fastjson.JSONObject;
+import lombok.Data;
 
 import java.io.Serializable;
 
+@Data
 public class User implements Serializable {
 
     private Integer height;
@@ -20,6 +23,8 @@ public class User implements Serializable {
     @Excel(name = "eage")
     private String eage;
 
+    private JSONObject o;
+
     public User() {
     }
 
@@ -29,45 +34,7 @@ public class User implements Serializable {
         this.age = age;
     }
 
-    public Integer getHeight() {
-        return height;
-    }
 
-    public void setHeight(Integer height) {
-        this.height = height;
-    }
-
-    public String getEage() {
-        return eage;
-    }
-
-    public void setEage(String eage) {
-        this.eage = eage;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getAge() {
-        return age;
-    }
-
-    public void setAge(String age) {
-        this.age = age;
-    }
 
     @Override
     public String toString() {
