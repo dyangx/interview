@@ -4,6 +4,7 @@ package com.example.test;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.UUID;
 
 /**
  * @author: yangjie
@@ -25,5 +26,10 @@ public class Test5 {
         System.out.println(s);
     }
 
+    @Test
+    public void test1(){
+        String id = UUID.randomUUID().toString().replaceAll("-","");
+        System.out.println((int)(Math.random()*10000));
+    }
 
 }

@@ -2,6 +2,7 @@ package com.example.test;
 
 import com.example.service.TesetService;
 import com.example.service.impl.TesetServiceImpl;
+import com.example.vo.Usr;
 
 import javax.swing.*;
 import javax.validation.constraints.NotNull;
@@ -16,6 +17,8 @@ import java.util.*;
 public class TestYou {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
+        Usr u = Usr.builder().name("ss").build();
+        System.out.println(u);
 
     }
 }

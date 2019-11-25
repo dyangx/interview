@@ -111,4 +111,17 @@ public class HelloController {
         User user = o.toJavaObject(User.class);
         return user;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/insertTr")
+    public Object insertTr(){
+        tesetService.insertTran();
+        return "ok!";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/select.json")
+    public Object select(){
+        return tesetService.selectTran();
+    }
 }

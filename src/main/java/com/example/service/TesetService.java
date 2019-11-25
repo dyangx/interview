@@ -18,4 +18,8 @@ public interface TesetService {
     String insertBatch(boolean b);
     String insertBatchSession(boolean b);
     String insertBatchSessionF(boolean b);
+
+    void insertTran();
+
+    Object selectTran();
 }

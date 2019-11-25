@@ -1,8 +1,6 @@
 package com.example.mapper;
 
-import com.example.vo.Usr;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -11,15 +9,16 @@ import java.util.Map;
 
 /**
  * @author: yangjie
- * @date: Created in 2019/10/18 14:53
+ * @date: Created in 2019/11/22 14:07
  */
-
 @Repository
-public interface TesterMapper {
-//    @Select("select")
-    List<Usr> getUser();
+public interface MyMapper {
 
-    void insertUsr(String id,String name);
 
+    @Insert("insert into mytest VALUES (#{id},'dy',26,NOW());")
+    Integer insertMyTest(Integer id);
+
+    @Select("select * from mytest")
+    List<Map<String,String>> selectMyTest();
 
 }
