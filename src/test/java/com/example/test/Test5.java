@@ -4,6 +4,7 @@ package com.example.test;
 import org.junit.Test;
 
 import java.io.*;
+import java.util.Objects;
 import java.util.UUID;
 
 /**
@@ -30,6 +31,19 @@ public class Test5 {
     public void test1(){
         String id = UUID.randomUUID().toString().replaceAll("-","");
         System.out.println((int)(Math.random()*10000));
+    }
+
+    @Test
+    public void test2(){
+        boolean b = Objects.equals("1",1);
+        boolean bb = Objects.equals("1000",1000);
+        Integer c = 1000;
+        int d = 1000;
+        boolean bbb = Objects.equals(c,d);
+        System.out.println(b);
+        System.out.println(bb);
+        System.out.println(bbb);
+        System.out.println(c == 1000);
     }
 
 }
