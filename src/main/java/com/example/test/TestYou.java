@@ -17,8 +17,28 @@ import java.util.*;
 public class TestYou {
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        Usr u = Usr.builder().name("ss").build();
-        System.out.println(u);
+        Thread t1 = new Thread(() ->{
+            int i = 0;
+            while (i != 10000){
+                System.out.println("I am t1 in "+ i++);
+                //                    Thread.sleep(1000);
+            }
+        });
+        Thread t2 = new Thread(() ->{
+            int i = 0;
+            while (i != 10000){
+                System.out.println("I am t2 in "+i++);
+                //                    Thread.sleep(1000);
+            }
+        });
+
+        t1.start();
+        t2.start();
+        Thread.yield();
+        System.out.println("end........");
+
+        final Exception e = new Exception();
+//        e = new Exception();
 
     }
 }

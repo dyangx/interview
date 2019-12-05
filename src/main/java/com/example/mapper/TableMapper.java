@@ -1,5 +1,6 @@
 package com.example.mapper;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
@@ -15,4 +16,7 @@ public interface TableMapper {
 
     @Select("show CREATE table ${account}")
     Map<String,String> getTableSql(String account);
+
+    @Insert("insert into t_ipsd VALUES (#{uid},#{typeId},#{typeName},#{t_name},null)")
+    void insertValue(String uid,String typeId,String typeName,String t_name);
 }

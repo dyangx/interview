@@ -62,4 +62,21 @@ public class Test {
         br.close();
         return list;
     }
+
+    @org.junit.Test
+    public void test1() throws IOException {
+        InputStreamReader isr = new InputStreamReader(new FileInputStream("C:\\Users\\Administrator\\Desktop\\sql\\ispd-lvc.sql"));
+        BufferedReader br = new BufferedReader(isr);
+        PrintWriter pw = new PrintWriter("C:\\Users\\Administrator\\Desktop\\insert.sql");
+        String sql;
+        while ((sql = br.readLine())!= null){
+            if(sql.startsWith("INSERT")){
+                pw.write(sql+"\n");
+                System.out.println(sql);
+            }
+        }
+        pw.flush();
+        pw.close();
+        br.close();
+    }
 }

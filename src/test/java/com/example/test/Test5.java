@@ -46,4 +46,18 @@ public class Test5 {
         System.out.println(c == 1000);
     }
 
+    @Test
+    public void test3() throws InterruptedException {
+
+        while (true){
+            Thread.sleep(500);
+            t();
+        }
+    }
+
+    public void t(){
+        byte[] b = new byte[50*1024*1024];
+        System.out.println(b);
+    }
+
 }
