@@ -10,4 +10,21 @@
     <insert id="insertUsr">
         INSERT into usr(id,name,age,birth,phone,oder) values(#{id},#{name},2020,now(),'123456789',100)
     </insert>
+
+    <select id="queryPeople" resultMap="query">
+        SELECT tt.p_id 'pId',tt.id 'id',tt.s_id 'sId',tt.name 'name' from t_recursion tt where tt.id = #{id}
+    </select>
+
+    <select id="queryBySid" resultMap="query">
+        SELECT tt.p_id 'pId',tt.id 'id',tt.s_id 'sId',tt.name 'name' from t_recursion tt where tt.p_id = #{id}
+    </select>
+
+    <resultMap id="query" type="com.example.vo.Recursive">
+        <id column="id" property="id" ></id>
+        <result column="s_id" property="sId" ></result>
+        <result column="name" property="name" ></result>
+        <result column="p_id" property="pId" ></result>
+        <collection property="list" select="queryBySid" column="id" ofType="com.example.vo.Recursive"></collection>
+    </resultMap>
+
 </mapper>

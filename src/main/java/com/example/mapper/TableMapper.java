@@ -2,6 +2,7 @@ package com.example.mapper;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -19,4 +20,10 @@ public interface TableMapper {
 
     @Insert("insert into t_ipsd VALUES (#{uid},#{typeId},#{typeName},#{t_name},null)")
     void insertValue(String uid,String typeId,String typeName,String t_name);
+
+    @Update("drop table ${table}")
+    void dropTable(String table);
+
+    @Select("show tables")
+    List<String> getAllTableName();
 }
