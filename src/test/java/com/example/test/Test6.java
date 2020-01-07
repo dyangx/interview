@@ -47,4 +47,17 @@ public class Test6 {
             System.out.println(s);
         }
     }
+    @Test
+    public void test2(){
+        Integer i = new Integer(2000);
+        Integer ii = new Integer(2000);
+        Integer iii = 128;
+        Integer iiii = 128;
+        System.out.println(iiii == iii);
+        System.out.println(i == iii);
+        System.out.println(i.equals(ii));
+        Long l = new Long(2);
+        System.out.println(i.equals(l));
+
+    }
 }
