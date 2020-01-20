@@ -3,6 +3,7 @@ package com.example.test;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.example.vo.Po;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -59,5 +60,18 @@ public class Test6 {
         Long l = new Long(2);
         System.out.println(i.equals(l));
 
+    }
+
+    @Test
+    public void test3(){
+        String s = "\\\\sss"+"\\"+"asdf"+"\\"+"s";
+        System.out.println(s);
+    }
+
+    @Test
+    public void test4(){
+        String s = StringUtils.appendIfMissing("123" , null ,"321");
+//        StringUtil.
+        System.out.println(s);
     }
 }
