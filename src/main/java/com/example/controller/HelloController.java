@@ -6,6 +6,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
 import com.example.config.PropertiesBean;
 import com.example.service.SpringContextUtil;
+import com.example.service.SpringContextUtil;
 import com.example.service.TesetService;
 import com.example.utils.ExcelUtil;
 import com.example.vo.User;
@@ -15,12 +16,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ReflectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.util.ReflectionUtils;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +112,27 @@ public class HelloController {
         Environment e = propertiesBean.getEnvironment();
         System.out.println(e);
         return e;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/getfor",consumes="application/json")
+    public Object getfor(@RequestBody User u){
+        JSONObject o = u.getO();
+        User user = o.toJavaObject(User.class);
+        return user;
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/insertTr")
+    public Object insertTr(){
+        tesetService.insertTran();
+        return "ok!";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/select.json")
+    public Object select(){
+        return tesetService.selectTran();
     }
 
     @ResponseBody

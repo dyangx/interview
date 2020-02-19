@@ -1,5 +1,6 @@
 package com.example.service.impl;
 
+import com.example.mapper.MyMapper;
 import com.example.mapper.TesterMapper;
 import com.example.service.TesetService;
 import com.example.vo.Usr;
@@ -8,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,6 +29,9 @@ public class TesetServiceImpl implements TesetService {
 
     @Autowired
     SqlSessionFactory sqlSessionFactory;
+
+    @Autowired
+    MyMapper myMapper;
 
     @Override
     public void syso() {
@@ -98,7 +103,7 @@ public class TesetServiceImpl implements TesetService {
         List<Usr> list = new ArrayList<>();
         for(int i=50;i<70;i++){
             String id = UUID.randomUUID().toString().replaceAll("-","");
-            list.add(new Usr(id,"dyangx"+i,i,1,new Date(),new Date(),"123456789"));
+            list.add(new Usr(null,id,"dyangx"+i,i,1,new Date(),new Date(),"123456789"));
         }
         sqlSession.flushStatements();
         sqlSession.close();
@@ -106,5 +111,26 @@ public class TesetServiceImpl implements TesetService {
         String time = String.valueOf(end - s);
         System.out.println(time);
         return time;
+    }
+
+    @Override
+    @Transactional
+    public void insertTran() {
+        String id = UUID.randomUUID().toString().replaceAll("-","");
+        Integer idn = (int)(Math.random()*10000);
+        myMapper.insertMyTest(idn);
+        testerMapper.insertUsr(id,"ddyy");
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public Object selectTran() {
+
+
+        return myMapper.selectMyTest();
     }
 }

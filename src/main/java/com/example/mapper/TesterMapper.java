@@ -1,11 +1,14 @@
 package com.example.mapper;
 
+import com.example.vo.Recursive;
 import com.example.vo.Usr;
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author: yangjie
@@ -18,4 +21,6 @@ public interface TesterMapper {
     List<Usr> getUser();
 
     void insertUsr(String id,String name);
+
+    List<Recursive> queryPeople(Integer id);
 }
