@@ -5,18 +5,23 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
 import com.example.config.PropertiesBean;
+import com.example.service.SpringContextUtil;
 import com.example.service.TesetService;
 import com.example.utils.ExcelUtil;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +31,7 @@ import java.util.Map;
 public class HelloController {
 
     @Autowired
+    @Qualifier("userService")
     UserService userService;
     @Value("${server.port}")
     private String port;
@@ -101,5 +107,17 @@ public class HelloController {
         Environment e = propertiesBean.getEnvironment();
         System.out.println(e);
         return e;
+    }
+
+    @ResponseBody
+    @RequestMapping("/test")
+    public void test(){
+        Object object = SpringContextUtil.getBean("userService");
+        User u = new User("1","张三","25");
+        Method method = ReflectionUtils.findMethod(object.getClass(), "printUser",User.class);
+
+        Object o = ReflectionUtils.invokeMethod(method, object,u);
+        User uu = (User) o;
+        System.out.println(uu);
     }
 }
