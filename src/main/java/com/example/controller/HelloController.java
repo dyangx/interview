@@ -137,7 +137,7 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/test")
-    public void test(){
+    public User test(){
         Object object = SpringContextUtil.getBean("userService");
         User u = new User("1","张三","25");
         Method method = ReflectionUtils.findMethod(object.getClass(), "printUser",User.class);
@@ -145,5 +145,6 @@ public class HelloController {
         Object o = ReflectionUtils.invokeMethod(method, object,u);
         User uu = (User) o;
         System.out.println(uu);
+        return uu;
     }
 }

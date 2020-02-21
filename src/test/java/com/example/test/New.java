@@ -2,10 +2,7 @@ package com.example.test;
 
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @description:
@@ -16,7 +13,15 @@ public class New {
 
     @Test
     public void test1(){
-        Map<String,String> map = new HashMap<>();
-        map.put("1","2");
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        list.stream().filter(x -> x>2).forEach(x -> System.out.println(x));
+
+        Set<String> s = new HashSet<>();
+        List<String> ss = new ArrayList<>(s);
+        System.out.println(ss);
     }
 }
