@@ -1,16 +1,22 @@
 package com.example.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
 import com.example.service.SpringContextUtil;
+import com.example.utils.TestYouUtil;
+import com.example.vo.ReqVO;
+import com.example.vo.TestYouVO;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Function;
 
 /**
  * @author: yangjie
@@ -34,6 +40,15 @@ public class TestYouController {
 
         Object c = (Object) u;
         Object o = ReflectionUtils.invokeMethod(method, object,c);
+        return o;
+    }
+
+    @PostMapping("/testMe")
+    public Object testMe(@RequestBody TestYouVO vo) throws ClassNotFoundException {
+        ReqVO reqVO = TestYouUtil.handleReqParam(vo);
+        Object bean = SpringContextUtil.getBean(vo.getServiceName());
+        Method method = ReflectionUtils.findMethod(bean.getClass(), vo.getMethodName(),reqVO.getClasses());
+        Object o = ReflectionUtils.invokeMethod(method, bean,reqVO.getArgs());
         return o;
     }
 

@@ -14,13 +14,15 @@ public class Test6 {
     static TheadQueryService theadQueryService;
 
     public static void main(String[] args) {
-        String s = TestYouUtil.getReq("userService","printUser", User.class);
+        User u = new User();
+        u.setAge("1");
+        u.setId("000000");
+        u.setName("张三");
+
+        String s = TestYouUtil.postReq("userService","printUser", u);
         System.out.println(s);
     }
 
-    public static void stst(Class x){
-        System.out.println(x);
-        System.out.println(x.getName());
-    }
+
 
 }

@@ -16,11 +16,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ReflectionUtils;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpServletResponse;
@@ -115,11 +113,11 @@ public class HelloController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/getfor",consumes="application/json")
+    @PostMapping(value = "/getfor",consumes="application/json")
     public Object getfor(@RequestBody User u){
-        JSONObject o = u.getO();
-        User user = o.toJavaObject(User.class);
-        return user;
+//        JSONObject o = u.getO();
+//        User user = o.toJavaObject(User.class);
+        return u;
     }
 
     @ResponseBody
@@ -141,7 +139,6 @@ public class HelloController {
         Object object = SpringContextUtil.getBean("userService");
         User u = new User("1","张三","25");
         Method method = ReflectionUtils.findMethod(object.getClass(), "printUser",User.class);
-
         Object o = ReflectionUtils.invokeMethod(method, object,u);
         User uu = (User) o;
         System.out.println(uu);

@@ -9,6 +9,8 @@ import java.io.Serializable;
 @Data
 public class User implements Serializable {
 
+    private static final long serialVersionUID=11L;
+
     private Integer height;
 
     @Excel(name = "id")
