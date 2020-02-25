@@ -14,8 +14,8 @@ import java.util.stream.Collectors;
  * @author: yangjie
  * @date: Created in 2019/11/26 15:37
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class Test {
 
     @Autowired
