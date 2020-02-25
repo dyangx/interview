@@ -15,8 +15,8 @@ import java.util.List;
  * @author: yangjie
  * @date: Created in 2019/12/5 16:40
  */
-@RunWith(SpringRunner.class)
-@SpringBootTest
+//@RunWith(SpringRunner.class)
+//@SpringBootTest
 public class RecursiveTest {
 
     @Autowired
