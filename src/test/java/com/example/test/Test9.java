@@ -1,6 +1,7 @@
 package com.example.test;
 
 import com.alibaba.fastjson.JSON;
+import com.example.vo.Page;
 import com.example.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.util.RamUsageEstimator;
@@ -11,6 +12,21 @@ import java.util.Date;
 import java.util.List;
 
 public class Test9 {
+
+    @Test
+    public void test22() {
+        System.out.println(new Integer(1) == new Integer(1));
+        System.out.println(new Integer(1024) == new Integer(1024));
+    }
+
+    @Test
+    public void test23() {
+        Page page = new Page();
+        Object o = (Object) page;
+        String s = JSON.toJSONString(o);
+        System.out.println(s);
+
+    }
 
     @Test
     public void test() {
