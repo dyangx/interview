@@ -1,18 +1,32 @@
 package com.example.test;
 
 import com.alibaba.fastjson.JSON;
-import com.example.vo.Fo;
 import com.example.vo.Page;
 import com.example.vo.User;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.lucene.util.RamUsageEstimator;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 public class Test9 {
+
+    @Test
+    public void test22() {
+        System.out.println(new Integer(1) == new Integer(1));
+        System.out.println(new Integer(1024) == new Integer(1024));
+    }
+
+    @Test
+    public void test23() {
+        Page page = new Page();
+        Object o = (Object) page;
+        String s = JSON.toJSONString(o);
+        System.out.println(s);
+
+    }
 
     @Test
     public void test() {
@@ -36,97 +50,138 @@ public class Test9 {
 
     @Test
     public void test2() {
-        System.out.println(new Integer(1) == new Integer(1));
-        System.out.println(new Integer(1024) == new Integer(1024));
+        Integer i = 1;
+        int in = 1;
+
+        Integer b = 100000;
+        Integer c = new Integer(10000);
+        Integer cc = new Integer(10000);
+        int bb = 100000;
+        System.out.println( i.equals(in));
+        System.out.println(b == bb);
+        System.out.println(c == cc);
+        System.out.println(c.equals(null));
+        System.out.println(new Integer(10000) > new Integer(10000));
+        System.out.println(new Integer(10001) > new Integer(10000));
+
     }
 
     @Test
     public void test3() {
-        Page page = new Page();
-        Object o = (Object) page;
-        String s = JSON.toJSONString(o);
-        System.out.println(s);
-
+        int cap = 1;
+        int n = cap - 1;
+        n |= n >>> 1;
+        n |= n >>> 2;
+        n |= n >>> 4;
+        n |= n >>> 8;
+        n |= n >>> 16;
+        int x = (n < 0) ? 1 : (n >= (1 << 30)) ? (1 << 30) : n + 1;
+        System.out.println(x);
     }
 
     @Test
-    public void test4(){
-
-        System.out.println((int) 'G');
-        System.out.println((char) 71);
+    public void test4() {
+        System.out.println(new Date());
+        System.out.println(new Date(System.currentTimeMillis()-1000*60*60*2));
     }
 
+    static String num = "0123456789";
     @Test
-    public void test5(){
-     /*   Fo fo2 = new Fo("李四",1);
-        Fo fo1 = new Fo("张三",-1);
-        Fo fo3 = new Fo("王五",0);*/
-        List<Fo> list = new ArrayList<>();
-        for(int i=0;i<50;i++){
-            Fo fo = new Fo("",i%10-5);
-            list.add(fo);
+    public void test5() {
+        String s = "3[a2[c]2[abc]3[cd]ef]";
+        String end = last(s);
+        System.out.println(end);
+    }
+
+    public String last(String s){
+        while (s.contains("[")){
+            StringBuffer sb = new StringBuffer(gen(s));
+            s = sb.reverse().toString();
         }
-        System.out.println(list);
-        this.test(list);
-        System.out.println(list);
+        return s;
     }
 
-    public void test(List<Fo> list){
-        int first = 0;
-        int mid = 0;
-        int last = list.size() - 1;
-        while(last > first){
-            if(list.get(first).compareTo() < 0){
-                mid = ++first;
-            }else if(list.get(first).compareTo() == 0){
-                if(list.get(last).compareTo() < 0){
-                    this.swap(first,last,list);
-                    mid = ++first;
-                }else if(list.get(last).compareTo() == 0) {
-                    if(mid < last){
-                        if(list.get(mid).compareTo() < 0){
-                            swap(first,mid,list);
-                            mid = ++first;
-                        }else if(list.get(mid).compareTo() > 0){
-                            swap(mid,last,list);
-                            last--;
-                        }else {
-                            mid++;
-                        }
-                    }else {
-                        break;
-                    }
+    public String gen(String base){
+        List<String> list = new ArrayList<>();
+        int ca = -1;
+        StringBuffer x = new StringBuffer();
+        StringBuffer num = new StringBuffer();
+        for(int i=base.length() -1;i>=0;i--){
+            char a = base.charAt(i);
+            if(']' == a){
+                if(ca == -1){
+                    addString(list,x.toString(),new StringBuffer("1"));
+                    x = new StringBuffer();
+                    num = new StringBuffer();
                 }else {
-                    last--;
+                    x.append(a);
                 }
-            } else {
-                if(list.get(last).compareTo() > 0){
-                    last--;
-                }else if(list.get(last).compareTo() == 0){
-                    swap(first,last,list);
-                    last--;
+                ca +=1;
+            }else if('[' == a){
+                ca -=1;
+                if(ca != -1){
+                    x.append(a);
+                }
+            }else if(isNum(a)){
+                if(ca != -1 ){
+                    x.append(a);
+                    continue;
+                }
+                if(i!=0 && isNum(base.charAt(i-1))){
+                    num.append(a);
                 }else {
-                    swap(first,last,list);
-                    mid = ++first;
+                    num.append(a);
+                    addString(list,x.toString(),num);
+                    ca = -1;
+                    x = new StringBuffer();
+                    num = new StringBuffer();
                 }
+            }else{
+                x.append(a);
             }
+
         }
-    }
-    public <E> void swap(int a,int b,List<E> list){
-        E e = list.get(a);
-        list.set(a,list.get(b));
-        list.set(b,e);
+
+        StringBuffer sb = new StringBuffer();
+        list.stream().forEach(e -> sb.append(e));
+        if(StringUtils.isNotEmpty(x)){
+            sb.append(x);
+        }
+        return sb.toString();
     }
 
-    @Test
-    public void test11(){
-        Fo fo2 = new Fo("李四",2);
-        Fo fo1 = new Fo("张三",1);
-        List<Fo> list = new ArrayList<>();
-        list.add(fo2);
-        list.add(fo1);
-        System.out.println(list);
-        swap(0,1,list);
-        System.out.println(list);
+    public void addString(List<String> list,String s,StringBuffer num){
+        int index = Integer.valueOf(num.reverse().toString());
+        for(int i=0;i<index;i++){
+            list.add(s);
+        }
     }
+
+    public boolean isNum(char x){
+        return num.contains(String.valueOf(x));
+    }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
