@@ -1,6 +1,9 @@
 package com.example.test;
 
+import java.util.BitSet;
 import java.util.List;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @author: yangjie
@@ -13,6 +16,10 @@ public class Clazz {
 //    }
 
     public String s1(List<Integer> list){
+        Lock lock;
+        ReentrantLock reentrantLock;
+        BitSet bitSet;
+        StringBuffer sb = new StringBuffer();
         return "";
     }
 }
