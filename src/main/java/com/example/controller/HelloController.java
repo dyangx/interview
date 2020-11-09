@@ -39,6 +39,8 @@ public class HelloController {
     @Value("${server.port}")
     private String port;
 
+    private int i = 0;
+
     @Autowired
     TesetService tesetService;
 
@@ -130,6 +132,8 @@ public class HelloController {
     @ResponseBody
     @RequestMapping(value = "/select.json")
     public Object select(){
+        i = i+1;
+        System.out.println(i);
         return tesetService.selectTran();
     }
 

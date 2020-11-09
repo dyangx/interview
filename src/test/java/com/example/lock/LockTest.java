@@ -1,5 +1,11 @@
 package com.example.lock;
 
+import java.util.Vector;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.LockSupport;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
@@ -33,5 +39,18 @@ public class LockTest {
         t1.start();
         t2.start();
         t3.start();
+
+        LockSupport lockSupport;
+        Condition condition;
+//        DefaultFuture defaultFuture;
+        CopyOnWriteArrayList<String> coa = new CopyOnWriteArrayList<>();
+        coa.add("1234");
+        String s = coa.get(0);
+        Vector<String> vector = new Vector<>();
+        vector.add("123");
+        vector.get(0);
+
+        Executors.newCachedThreadPool();
+//        new ThreadPoolExecutor();
     }
 }
