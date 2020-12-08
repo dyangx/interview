@@ -4,10 +4,10 @@ import com.example.service.FunctionService;
 import com.example.vo.User;
 import org.junit.Test;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * @author: yangj
@@ -49,6 +49,20 @@ public class Test11 {
         long s4 = System.currentTimeMillis();
         System.out.println(s4 -s3);
 
+
+    }
+
+    @Test
+    public void test3(){
+        List<Integer> list = new ArrayList<>();
+        list.add(2);
+        list.add(1);
+        list.add(3);
+        list.stream().sorted(Comparator.comparing(Integer::intValue)).collect(Collectors.toList());
+        System.out.println(list);
+
+        Set<String> s = new HashSet<>();
+        Set<String> sx = new TreeSet<>();
 
     }
 
