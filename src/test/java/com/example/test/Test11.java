@@ -5,6 +5,7 @@ import com.example.vo.User;
 import org.junit.Test;
 
 import java.util.*;
+import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -63,6 +64,14 @@ public class Test11 {
 
         Set<String> s = new HashSet<>();
         Set<String> sx = new TreeSet<>();
+
+    }
+
+    @Test
+    public void test4(){
+        System.out.println("111");
+//        Conc
+
 
     }
 
