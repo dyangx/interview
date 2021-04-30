@@ -92,7 +92,6 @@ public class CheckHandler {
         String s = CheckHandler.check(vo);
         System.out.println(vo);
         System.out.println(s);
-
         boolean b = ValidateUtil.SelfValidationEnum.EMAIL.getFunction().apply("1832@163.com");
         System.out.println(b);
     }
