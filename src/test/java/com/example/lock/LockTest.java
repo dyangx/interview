@@ -8,10 +8,9 @@ import java.util.concurrent.locks.ReentrantLock;
  */
 public class LockTest {
 
-    final static ReentrantLock lock = new ReentrantLock();
+    static ReentrantLock lockk = new ReentrantLock();
 
-    public static void say(String s){
-        final ReentrantLock lockk = lock;
+    private static void say(String s){
         lockk.lock();
         try {
             System.out.println(s + "start..");
@@ -33,5 +32,6 @@ public class LockTest {
         t1.start();
         t2.start();
         t3.start();
+
     }
 }

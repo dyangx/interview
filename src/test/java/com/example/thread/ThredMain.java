@@ -1,6 +1,8 @@
 package com.example.thread;
 
 import java.util.List;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author: yangjie
@@ -8,9 +10,11 @@ import java.util.List;
  */
 public class ThredMain {
 
+    public Integer i = 0;
+
     public static void test(String name){
         System.out.println(name + " start ....");
-        if(name.indexOf("1") > -1){
+        if(name.contains("1")){
             try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
@@ -18,6 +22,9 @@ public class ThredMain {
             }
         }
         System.out.println(name + " end ....");
+    }
+
+    public static void add(){
     }
 
     public static void main(String[] args) {
@@ -35,6 +42,10 @@ public class ThredMain {
         t1.start();
         t2.start();
         t3.start();
+
+        ReentrantLock lock = new ReentrantLock();
+        ReentrantReadWriteLock lockj = new ReentrantReadWriteLock();
+        lock.lock();
 
     }
 

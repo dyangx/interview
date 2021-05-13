@@ -54,7 +54,9 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/getPort.json")
-    public String getPort(){
+    public String getPort() throws InterruptedException {
+        Thread.sleep(2000);
+        System.out.println(System.currentTimeMillis()/1000);
         return "Hello, I am is "+port;
     }
 

@@ -4,10 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Objects;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Fo implements Comparable<Fo>{
+public class Fo implements Comparable<Fo> {
 
     private String name;
     private Integer age;
@@ -20,4 +22,6 @@ public class Fo implements Comparable<Fo>{
     public int compareTo(Fo o) {
         return age;
     }
+
+
 }
