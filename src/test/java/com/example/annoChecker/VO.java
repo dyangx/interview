@@ -23,5 +23,11 @@ public class VO {
 
     @SelfRuleChecker(msg = "邮箱格式不对",type = ValidateUtil.SelfValidationEnum.EMAIL)
     private String email;
+    
+    @Check(
+            lengthChecker = @LengthChecker(msg = "电话",maxLength = 11,minLength = 5),
+            notNull = @NotNullChecker(msg = "电话不能空")
+    )
+    private String zzl;
 
 }

@@ -11,4 +11,6 @@ public interface AsyncService {
     void handle2(long s);
 
     void sleep();
+
+    String test2(String id);
 }
