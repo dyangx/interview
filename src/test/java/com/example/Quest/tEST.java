@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class tEST<ff> {
 
@@ -61,6 +63,7 @@ public class tEST<ff> {
 
     @Override
     public String toString() {
+        Map<String,String> map = new HashMap<>();
         return super.toString();
     }
 }
