@@ -9,7 +9,7 @@ public class StrUtil {
     static String handle(List<FieldVO> list){
         StringBuffer sb = new StringBuffer();
         for(FieldVO vo : list){
-            sb.append("/** ").append(vo.getDesc()).append(" */").append("\n");
+            sb.append("@ApiModelProperty(\"").append(vo.getDesc()).append(" \")").append("\n");
             sb.append("@TableField(\"").append(vo.getColumn()).append("\") \n");
             sb.append("private ").append(typeHandle(vo.getType()) + " ").append(strHandle(vo.getColumn())).append(";\n \n");
         }
@@ -42,6 +42,8 @@ public class StrUtil {
             return "Integer";
         }else if(s.contains("date")){
             return "Date";
+        }else if(s.contains("decimal")){
+            return "BigDecimal";
         }
         throw new IllegalArgumentException("类型: "+s+" 不支持，请添加");
     }

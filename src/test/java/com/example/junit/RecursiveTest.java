@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,5 +31,17 @@ public class RecursiveTest {
         String s = JSON.toJSONString(list);
         System.out.println(s);
         System.out.println(JSON.parseArray(s));
+    }
+
+    @Test
+    public void test2(){
+        Date d = new Date(1630454400000L + 3600000L);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        System.out.println(sdf.format(d));
+    }
+
+    @Test
+    public void test3(){
+
     }
 }

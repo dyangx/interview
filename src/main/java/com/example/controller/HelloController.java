@@ -8,7 +8,9 @@ import com.example.config.PropertiesBean;
 import com.example.service.SpringContextUtil;
 import com.example.service.SpringContextUtil;
 import com.example.service.TesetService;
+import com.example.utils.EimpUtil;
 import com.example.utils.ExcelUtil;
+import com.example.vo.Contract;
 import com.example.vo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -70,6 +72,12 @@ public class HelloController {
         userList.add(user);
         userList.add(user);
         ExcelUtil.exportExcel(userList, "title", "sheetName", User.class,"ss.xls", response);
+    }
+
+    @RequestMapping("/exportExcelpo")
+    public void exportExcelpo(HttpServletResponse response) throws IOException {
+        List<Contract> list = EimpUtil.getList();
+        ExcelUtil.exportExcel(list, "title", "sheetName", Contract.class,"ss.xls", response);
     }
 
     @RequestMapping("/export2")
