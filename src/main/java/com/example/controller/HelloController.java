@@ -76,7 +76,7 @@ public class HelloController {
 
     @RequestMapping("/exportExcelpo")
     public void exportExcelpo(HttpServletResponse response) throws IOException {
-        List<Contract> list = EimpUtil.getList();
+        List<Contract> list = EimpUtil.getList2();
         ExcelUtil.exportExcel(list, "title", "sheetName", Contract.class,"ss.xls", response);
     }
 

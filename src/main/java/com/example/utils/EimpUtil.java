@@ -21,7 +21,7 @@ import java.util.*;
  */
 public class EimpUtil {
 
-    public static final String token = "HhZBq2WNaEM7raQCmdt70ZBA8GGSEKG2++Ss1H+YtQtTiqMQLfofXd1Wuk0R6RyXnG+Fwl0MzY071shNVEqzn2f28br9Lasr/VicUfn5YuotsV1BDTBjEZG1dc8lwJHA/P/PJy2uzwgofutXebjVIbFWVoT98Iz+0VdaNqeNM6oFIswgTkEFEpvkPC6Ybo2J";
+    public static final String token = "HhZBq2WNaEM7raQCmdt70ZBA8GGSEKG2++Ss1H+YtQtTiqMQLfofXd1Wuk0R6RyXnG+Fwl0MzY071shNVEqzn2f28br9Lasr/VicUfn5YuotsV1BDTBjEZG1dc8lwJHA/P/PJy2uzwgofutXebjVIbFWVoT98Iz+0VdaNqeNM6rlym0GfTK8mool2VFfLmgs";
     public static final String detailUrl = "https://eimp-gateway.sinoiov.com/newapi/contract/getContractDetails?contractId=";
     public static final String Url = "https://eimp-gateway.sinoiov.com/newapi/contract/list";
 
@@ -38,6 +38,19 @@ public class EimpUtil {
         List<String> contractList = new ArrayList<>(Arrays.asList(contracts.split(",")));
         for(String str : contractList) {
             Contract vo = getContract(str);
+            list.add(vo);
+        }
+        return list;
+    }
+
+    public static List<Contract> getList2(){
+        List<Contract> list = new ArrayList<>();
+        String s = "851,8805,9041,10485,10507,10527,10529,10531,10533,10535,10537,10539,10541,10611,10649,10691,10699,10773,10807,10835,10837,10839,10841,10843,10857";
+        List<String> ids = new ArrayList<>(Arrays.asList(s.split(",")));
+        for(String str : ids) {
+            Contract vo = new Contract();
+            JSONObject jsonObject = getDetail(Long.parseLong(str));
+            build(vo,jsonObject);
             list.add(vo);
         }
         return list;
@@ -93,6 +106,9 @@ public class EimpUtil {
     }
 
     private static void build(Contract vo,JSONObject data){
+        String serialNumber = data.getString("serialNumber");
+        vo.setContractNo(serialNumber);
+
         String contractName = data.getString("name");
         vo.setContractName(contractName);
 
