@@ -1,7 +1,6 @@
 package com.example.lock;
 
 import com.example.vo.User;
-import com.sun.xml.internal.ws.util.CompletedFuture;
 
 import java.util.Vector;
 import java.util.concurrent.CompletableFuture;

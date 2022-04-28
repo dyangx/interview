@@ -12,6 +12,7 @@ import com.example.utils.EimpUtil;
 import com.example.utils.ExcelUtil;
 import com.example.vo.Contract;
 import com.example.vo.User;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,6 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Method;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -49,6 +51,15 @@ public class HelloController {
     @Autowired
     PropertiesBean propertiesBean;
 
+
+    @ResponseBody
+    @RequestMapping("/decimal")
+    public User decimal(){
+        User u = new User("1","张三","25");
+        u.setDecimal(new BigDecimal("88"));
+        return userService.printUser(u);
+    }
+
     @ResponseBody
     @RequestMapping("/user.json")
     public User user(){
@@ -58,7 +69,8 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/getPort.json")
-    public String getPort() throws InterruptedException {
+    @ApiOperation(value = "运营")
+    public String zzort(String s,HttpServletResponse response) throws InterruptedException {
         Thread.sleep(2000);
         System.out.println(System.currentTimeMillis()/1000);
         return "Hello, I am is "+port;

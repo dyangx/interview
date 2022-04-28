@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 public class User implements Serializable {
@@ -24,6 +25,8 @@ public class User implements Serializable {
 
     @Excel(name = "eage")
     private String eage;
+
+    private BigDecimal decimal;
 
     private JSONObject o;
 

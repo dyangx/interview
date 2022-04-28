@@ -40,7 +40,7 @@ public class StrUtil {
             return "Long";
         }else if(s.equals("tinyint")){
             return "Integer";
-        }else if(s.contains("date")){
+        }else if(s.contains("date") || s.contains("timestamp")){
             return "Date";
         }else if(s.contains("decimal")){
             return "BigDecimal";

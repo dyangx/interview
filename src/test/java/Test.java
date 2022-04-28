@@ -1,8 +1,9 @@
 import com.example.springBean.People;
-import com.sun.istack.internal.NotNull;
+import org.apache.poi.hpsf.Decimal;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
 
 public class Test {
 
@@ -17,8 +18,18 @@ public class Test {
         //得到Preson，并使用
         People person = factory.getBean("person",People.class);
         System.out.println(person);
-
         System.out.println("现在开始关闭容器！");
         ((ClassPathXmlApplicationContext)factory).registerShutdownHook();
+    }
+
+    @org.junit.Test
+    public void test2(){
+        BigDecimal decimal = new BigDecimal("7");
+        decimal.toString();
+        System.out.println(decimal);
+
+        ApplicationContext applicationContext = null;
+//        applicationContext.getBean()
+
     }
 }
