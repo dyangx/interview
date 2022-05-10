@@ -14,7 +14,7 @@ public class DataHandle {
     private static String password = "testRootZby!2020@";
 
     public static void main(String[] args) throws SQLException {
-        ResultSet rs = MySQL.tableFiledGen(url,user,password,"yhcrm_company_first_party");
+        ResultSet rs = MySQL.tableFiledGen(url,user,password,"zycrm_business_opportunity_notice");
         List<FieldVO> list  = new ArrayList<>();
         while (rs.next()) { // 循环读取结果数据集中的所有记录
             list.add(new FieldVO(rs.getString("column_name"),rs.getString("column_comment"),

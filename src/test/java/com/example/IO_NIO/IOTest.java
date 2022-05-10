@@ -150,6 +150,17 @@ public static void main(String[] args) throws IOException {
     }
 
     @Test
+    public void test122() throws IOException {
+        RandomAccessFile raf = new RandomAccessFile("C:\\Users\\ll18\\Desktop\\tx.txt", "rw");
+        String read = null;
+        while ((read = raf.readLine()) != null){
+            read = new String(read.getBytes("ISO-8859-1"),"utf-8")+"\n";
+            System.out.println(read);
+        }
+
+    }
+
+    @Test
     public void test13() throws IOException {
 //        FileOutputStream fos = new FileOutputStream("C:\\Users\\DYANGX\\Desktop\\新建文本文档.txt");
 //        User u = new User("1","2","3");

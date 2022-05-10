@@ -4,6 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
+import java.util.Random;
 
 public class Test {
 
@@ -31,5 +32,32 @@ public class Test {
         ApplicationContext applicationContext = null;
 //        applicationContext.getBean()
 
+    }
+
+    @org.junit.Test
+    public void test3(){
+        int[] arr = {1,4,3,5,7,8};
+
+        for(int i=0;i<arr.length;i++){
+            int a = arr[i];
+            for(int j=i+1;j<arr.length;j++){
+                if(arr[i] + arr[j] == 10){
+                    System.out.println(i);
+                    System.out.println(j);
+                    break;
+                }
+            }
+        }
+    }
+
+    @org.junit.Test
+    public void test4(){
+        String s = "abcabcbb";
+        int max = 0;
+        int a = 0;
+        int b = 1;
+        while (a< s.length() && b<s.length()){
+//            if(a.size() == 1)
+        }
     }
 }
