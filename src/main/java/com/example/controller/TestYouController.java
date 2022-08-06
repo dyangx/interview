@@ -3,6 +3,7 @@ package com.example.controller;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
+//import com.example.feign.YhFeign;
 import com.example.service.SpringContextUtil;
 import com.example.utils.TestYouUtil;
 import com.example.vo.ReqVO;
@@ -24,6 +25,9 @@ import java.util.function.Function;
  */
 @RestController
 public class TestYouController {
+
+//    @Autowired
+//    private YhFeign yhFeign;
 
     @Autowired
     @Qualifier("userService")
@@ -51,5 +55,15 @@ public class TestYouController {
         Object o = ReflectionUtils.invokeMethod(method, bean,reqVO.getArgs());
         return o;
     }
+
+//    @GetMapping("testHer")
+//    public Object testHer(){
+//        JSONObject ob = new JSONObject();
+//        ob.put("pageNum",10);
+//        ob.put("pageSize",1);
+//        String token = "Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VyX2Jhc2VfaWQiOiIyNTk0MHwxNjUyOTI2Mzk0NDc3In0.0mLnhE67BgHWGuLMRhwEtzX6GzzNrsOjInmM9_AAQJoJTbdU9_L7uUbkEiV7R8UpSPwS3Mof6anr-QZa4bSdlg";
+//        return yhFeign.go(ob,token);
+//
+//    }
 
 }

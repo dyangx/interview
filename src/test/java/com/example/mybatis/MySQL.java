@@ -8,8 +8,8 @@ public class MySQL {
     static ResultSet rs = null;
 
 
-    public static ResultSet tableFiledGen(String url,String user,String pwd,String table){
-        String sql = "select column_name,column_comment,data_type from information_schema.columns where table_name='"+table+"'";
+    public static ResultSet tableFiledGen(String url,String user,String pwd,String table,String database){
+        String sql = "select column_name,column_comment,data_type from information_schema.columns where table_name='"+table+"' and table_schema = '" + database+ "'";
         return querySql(url,user,pwd,sql);
     }
     public static ResultSet querySql(String url,String user,String pwd,String sql) {

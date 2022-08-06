@@ -1,26 +1,35 @@
+import com.aliyun.datahub.client.DatahubClient;
+import com.aliyun.datahub.client.DatahubClientBuilder;
 import com.example.springBean.People;
 import org.apache.poi.hpsf.Decimal;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 public class Test {
 
     public static void main(String[] args) {
         System.out.println("现在开始初始化容器");
+//        DatahubClient client = DatahubClientBuilder.newBuilder().
+
 
 //        @Service
-        String s;
+//        String s;
 
-        ApplicationContext factory = new ClassPathXmlApplicationContext("bean/bean.xml");
-        System.out.println("容器初始化成功");
-        //得到Preson，并使用
-        People person = factory.getBean("person",People.class);
-        System.out.println(person);
-        System.out.println("现在开始关闭容器！");
-        ((ClassPathXmlApplicationContext)factory).registerShutdownHook();
+//        ApplicationContext factory = new ClassPathXmlApplicationContext("bean/bean.xml");
+//        System.out.println("容器初始化成功");
+//        //得到Preson，并使用
+//        People person = factory.getBean("person",People.class);
+//        System.out.println(person);
+//        System.out.println("现在开始关闭容器！");
+//        ((ClassPathXmlApplicationContext)factory).registerShutdownHook();
     }
 
     @org.junit.Test
@@ -59,5 +68,19 @@ public class Test {
         while (a< s.length() && b<s.length()){
 //            if(a.size() == 1)
         }
+    }
+
+
+    @org.junit.Test
+    public void test5() throws InterruptedException {
+        Thread thread = new Thread(()->{
+            System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        });
+        System.out.println(thread.isDaemon());
+
+        System.out.println(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
+        ScheduledExecutorService service = Executors.newScheduledThreadPool(1);
+        service.scheduleAtFixedRate(thread,0,5, TimeUnit.SECONDS);
+        Thread.sleep(1000000);
     }
 }
