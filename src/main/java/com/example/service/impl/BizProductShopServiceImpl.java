@@ -7,14 +7,18 @@ import com.example.domain.BizProductShop;
 import com.example.service.BizProductShopService;
 import com.example.mapper.BizProductShopMapper;
 import org.elasticsearch.action.bulk.BulkProcessor;
+import org.elasticsearch.action.delete.DeleteRequest;
 import org.elasticsearch.action.index.IndexRequest;
 import org.elasticsearch.action.search.SearchRequest;
 import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.TimeValue;
+import org.elasticsearch.index.query.BoolQueryBuilder;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.index.query.TermQueryBuilder;
+import org.elasticsearch.index.reindex.DeleteByQueryRequest;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,13 +47,24 @@ public class BizProductShopServiceImpl extends ServiceImpl<BizProductShopMapper,
     @Autowired
     private RestHighLevelClient client;
 
-//    @PostConstruct
-    public void test(){
+    @PostConstruct
+    public void test() throws IOException {
         List<BizProductShop> list = this.list();
         for(BizProductShop shop : list) {
-            bulkProcessor.add(new IndexRequest("biz_product_shop").source(JSON.parseObject(JSON.toJSONString(shop))));
+            IndexRequest indexRequest = new IndexRequest("biz_product_shop");
+            indexRequest.id(shop.getId().toString());
+            bulkProcessor.add(indexRequest.source(JSON.parseObject(JSON.toJSONString(shop))));
         }
         bulkProcessor.flush();
+        DeleteRequest deleteRequest = new DeleteRequest("biz_product_shop");
+        DeleteByQueryRequest delete = new DeleteByQueryRequest("biz_product_shop");
+        BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
+        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("id", "2");
+        queryBuilder.mustNot(termQueryBuilder);
+        delete.setQuery(queryBuilder);
+
+//         client.deleteByQuery(delete,RequestOptions.DEFAULT);
+//         client.delete(new DeleteRequest("biz_product_shop"),RequestOptions.DEFAULT);
     }
 
     @Override

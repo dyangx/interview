@@ -2,7 +2,6 @@ package com.example.aop;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.SerializerFeature;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -38,10 +37,10 @@ public class LogAspect {
         String methodName = method.getDeclaringClass().getName() + "." + method.getName();
 
         boolean isGetMethod =StringUtils.startsWithAny(method.getName(),"select","get","query","find");
-        ApiOperation annotation = method.getAnnotation(ApiOperation.class);
-        if(annotation != null && StringUtils.isNotBlank(annotation.value())) {
-            methodName = annotation.value();
-        }
+//        ApiOperation annotation = method.getAnnotation(ApiOperation.class);
+//        if(annotation != null && StringUtils.isNotBlank(annotation.value())) {
+//            methodName = annotation.value();
+//        }
 
         if (args != null) {
             log.info("方法名称:{},请求参数：{}", methodName, JSON.toJSONString(args, SerializerFeature.IgnoreNonFieldGetter));

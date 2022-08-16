@@ -1,7 +1,5 @@
 package thread.threadlocal;
 
-import io.swagger.models.auth.In;
-
 /**
  * @author: yangj
  * @date: Created in 2020/11/9

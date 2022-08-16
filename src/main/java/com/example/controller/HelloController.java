@@ -12,7 +12,6 @@ import com.example.utils.EimpUtil;
 import com.example.utils.ExcelUtil;
 import com.example.vo.Contract;
 import com.example.vo.User;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -69,7 +68,7 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping("/getPort.json")
-    @ApiOperation(value = "运营")
+//    @ApiOperation(value = "运营")
     public String zzort(String s,HttpServletResponse response) throws InterruptedException {
         Thread.sleep(2000);
         System.out.println(System.currentTimeMillis()/1000);
