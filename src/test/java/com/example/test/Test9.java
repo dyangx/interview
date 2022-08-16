@@ -31,7 +31,7 @@ public class Test9 {
     @Test
     public void test() {
         User u = new User();
-        u.setAge("1");
+/*        u.setAge("1");
         u.setId("000000");
         u.setName("张三");
         String s = JSON.toJSONString(u);
@@ -45,7 +45,7 @@ public class Test9 {
         System.err.println(ss.length());
         System.err.println(RamUsageEstimator.sizeOf(b));
         System.err.println(RamUsageEstimator.shallowSizeOf(b));
-        System.err.println(RamUsageEstimator.humanSizeOf(b));
+        System.err.println(RamUsageEstimator.humanSizeOf(b));*/
     }
 
     @Test

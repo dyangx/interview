@@ -17,6 +17,8 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <elasticsearch.version>7.3.0</elasticsearch.version>
+
     </properties>
 
     <dependencies>
@@ -82,11 +84,11 @@
             <version>3.1.0</version>
         </dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.mybatis.spring.boot</groupId>
             <artifactId>mybatis-spring-boot-starter</artifactId>
             <version>2.1.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>mysql</groupId>
@@ -101,11 +103,11 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
+       <!-- <dependency>
             <groupId>org.apache.lucene</groupId>
             <artifactId>lucene-core</artifactId>
             <version>4.0.0</version>
-        </dependency>
+        </dependency>-->
 
       <!--  <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -196,6 +198,33 @@
             <artifactId>aliyun-sdk-datahub</artifactId>
             <version>2.21.6-public</version>
         </dependency>
+        <dependency>
+            <groupId>org.elasticsearch</groupId>
+            <artifactId>elasticsearch</artifactId>
+            <version>${elasticsearch.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.elasticsearch.client</groupId>
+            <artifactId>elasticsearch-rest-high-level-client</artifactId>
+            <version>7.3.0</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.elasticsearch</groupId>
+                    <artifactId>elasticsearch</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>com.baomidou</groupId>
+            <artifactId>mybatis-plus-boot-starter</artifactId>
+            <version>3.4.3</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>org.apache.lucene</groupId>-->
+<!--            <artifactId>lucene-core</artifactId>-->
+<!--            <version>8.8.1</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
