@@ -1,5 +1,6 @@
 package com.example.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.domain.BizProductShop;
 import com.baomidou.mybatisplus.extension.service.IService;
 
@@ -12,6 +13,6 @@ import java.io.IOException;
 */
 public interface BizProductShopService extends IService<BizProductShop> {
 
-    Object search(String key,int pageNum,int PageSize) throws IOException;
+    Object search(JSONObject json) throws IOException;
 
 }

@@ -1,8 +1,10 @@
 package com.example.controller;
 
 
+import com.alibaba.fastjson.JSONObject;
 import com.example.service.BizProductShopService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +18,7 @@ public class EsController {
 
 
     @RequestMapping("search")
-    public Object test(String key,int pageNo,int pageSize) throws IOException {
-        return bizProductShopService.search(key,pageNo,pageSize);
+    public Object test(@RequestBody JSONObject json) throws IOException {
+        return bizProductShopService.search(json);
     }
 }

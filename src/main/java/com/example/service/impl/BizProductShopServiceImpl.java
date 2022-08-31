@@ -47,7 +47,7 @@ public class BizProductShopServiceImpl extends ServiceImpl<BizProductShopMapper,
     @Autowired
     private RestHighLevelClient client;
 
-    @PostConstruct
+//    @PostConstruct
     public void test() throws IOException {
         List<BizProductShop> list = this.list();
         for(BizProductShop shop : list) {
@@ -68,19 +68,19 @@ public class BizProductShopServiceImpl extends ServiceImpl<BizProductShopMapper,
     }
 
     @Override
-    public Object search(String keyword, int pageNum, int PageSize) throws IOException {
+    public Object search(JSONObject json) throws IOException {
 
         SearchRequest searchRequest = new SearchRequest("biz_product_shop");
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         //分页 index = (当前页-1)*一页显示条数
-        searchSourceBuilder.from((pageNum - 1) * PageSize);
-        searchSourceBuilder.size(PageSize);
+        searchSourceBuilder.from((json.getInteger("pageNum") - 1) * json.getInteger("pageSize"));
+        searchSourceBuilder.size(json.getInteger("pageSize") );
 
         //精准匹配
-        //TermQueryBuilder termQueryBuilder =
-        // QueryBuilders.termQuery("positionName",keyword);
-        //searchSourceBuilder.query(termQueryBuilder);
-        QueryBuilder builder = QueryBuilders.matchQuery("address",keyword);
+//        TermQueryBuilder termQueryBuilder = QueryBuilders.termQuery("id",json.getInteger("id"));
+//        searchSourceBuilder.query(termQueryBuilder);
+
+        QueryBuilder builder = QueryBuilders.matchQuery("address",json.getString("address"));
         searchSourceBuilder.query(builder);
 
         searchSourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
