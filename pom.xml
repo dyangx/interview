@@ -226,6 +226,20 @@
 <!--            <version>8.8.1</version>-->
 <!--        </dependency>-->
 
+        <!--  flink 核心包  -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-java</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+
+        <!--  flink 流处理包  -->
+        <dependency>
+            <groupId>org.apache.flink</groupId>
+            <artifactId>flink-streaming-java_2.12</artifactId>
+            <version>1.7.2</version>
+        </dependency>
+
     </dependencies>
 
 

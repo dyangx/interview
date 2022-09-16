@@ -1,0 +1,15 @@
+import com lianlian talent tools config CenterMessageTempIdConfig
+import com lianlian talent tools data dto InboxVO
+import com lianlian talent tools data dto SendMessageVO
+import com lianlian talent tools data res MessageListRes
+import com lianlian talent tools enums MessageTypeEnum
+import com lianlian talent tools service MessageService
+import com lianlian talent tools utils HttpRequestUtil
+import com lianlian talent tools utils ObjectUtil
+import io swagger annotations
+import jodd util StringUtil
+import lombok RequiredArgsConstructor
+import lombok extern slf4j Slf4j
+import org apache ibatis annotations Param
+import org springframework beans factory annotation Autowired
+import org springframework validation annotation Validated
