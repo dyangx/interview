@@ -1,6 +1,7 @@
 package com.example.flink;
 
 import org.apache.flink.api.common.functions.FlatMapFunction;
+import org.apache.flink.api.common.operators.Order;
 import org.apache.flink.api.java.DataSet;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.DataSource;
@@ -14,6 +15,7 @@ public class WordCountBatch {
     public static void main(String[] args) throws Exception {
         // 1.获取flink 运行环境
         ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+
         String input = "B:\\project\\interview\\src\\main\\resources\\file\\test.txt";
         String output = "C:\\Users\\ll18\\Desktop\\data";
         // 2.获取待分析的数据
@@ -24,6 +26,7 @@ public class WordCountBatch {
         UnsortedGrouping<Tuple2<String,Integer>> grouping = wordOne.groupBy(0);
         // 将聚合在一起的数据累加处理
         DataSet<Tuple2<String,Integer>> dataSet = grouping.sum(1);
+        System.err.println(dataSet.sortPartition(1, Order.DESCENDING));
         dataSet.writeAsText(output);
         env.execute("program batch process");
     }
