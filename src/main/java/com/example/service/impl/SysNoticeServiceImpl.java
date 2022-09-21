@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 /**
 * @author dyang
 * @description 针对表【sys_notice(通知公告表)】的数据库操作Service实现
-* @createDate 2022-09-21 15:48:06
+* @createDate 2022-09-21 15:50:06
 */
 @Service
 public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice>
