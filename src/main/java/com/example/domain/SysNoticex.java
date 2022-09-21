@@ -14,7 +14,7 @@ import lombok.Data;
  */
 @TableName(value ="sys_notice")
 @Data
-public class SysNotice implements Serializable {
+public class SysNoticex implements Serializable {
     /**
      * 公告ID
      */
