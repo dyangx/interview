@@ -33,6 +33,11 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
     }
 
     @PostConstruct
+    public void test2(){
+        List<SysNotice> list = baseMapper.queryList();
+        System.out.println(list);
+    }
+
     public void test() throws UnsupportedEncodingException, InterruptedException {
         String url = "http://127.0.0.1:";
         int port = 5000;
