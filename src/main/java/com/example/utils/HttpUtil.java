@@ -1,14 +1,18 @@
 package com.example.utils;
 
 import lombok.extern.slf4j.Slf4j;
+import org.apache.http.Header;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.conn.ConnectionKeepAliveStrategy;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.DefaultConnectionKeepAliveStrategy;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.message.BasicHeader;
 import org.apache.http.util.EntityUtils;
 
 import javax.imageio.ImageIO;
@@ -21,13 +25,13 @@ import java.util.Map;
 public class HttpUtil {
     private static CloseableHttpClient getHttpClient() {
         RequestConfig defaultRequestConfig = RequestConfig.custom()
-                .setSocketTimeout(20000)
-                .setConnectTimeout(20000)
-                .setConnectionRequestTimeout(20000)
+                .setSocketTimeout(200000)
+                .setConnectTimeout(200000)
+                .setConnectionRequestTimeout(200000)
                 .build();
-
         return HttpClientBuilder
                 .create()
+                .setKeepAliveStrategy(DefaultConnectionKeepAliveStrategy.INSTANCE)
                 .setDefaultRequestConfig(defaultRequestConfig)
                 .build();
     }
@@ -166,9 +170,12 @@ public class HttpUtil {
     public static String ReturnGetBody(String url) {
         try {
             HttpGet httpGet = new HttpGet(url);
+            BasicHeader[] x = new BasicHeader[1];
+            x[0] = new BasicHeader("xx","ee");
+            httpGet.setHeaders(x);
             HttpResponse httpresponse = getHttpClient().execute(httpGet);
             HttpEntity entity = httpresponse.getEntity();
-            return EntityUtils.toString(entity, "UTF-8");
+            return EntityUtils.toString(entity, "GBK");
         } catch (Exception ex) {
             log.info("ReturnGetBody:url=" + url, ex);
         }
