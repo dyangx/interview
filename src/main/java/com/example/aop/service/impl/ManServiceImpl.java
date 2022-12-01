@@ -17,5 +17,10 @@ public class ManServiceImpl implements UserService {
         return null;
     }
 
+    @Override
+    public int add() {
+        return 0;
+    }
+
 
 }

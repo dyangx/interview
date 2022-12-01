@@ -2,6 +2,10 @@ package com.example.service;
 
 import com.example.domain.SysNotice;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.example.vo.Fan;
+import com.example.vo.Page;
+
+import java.util.List;
 
 /**
 * @author dyang
@@ -9,5 +13,7 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @createDate 2022-09-21 15:55:16
 */
 public interface SysNoticeService extends IService<SysNotice> {
+
+    List<SysNotice> getList();
 
 }

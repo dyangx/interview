@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.example.aop.service.UserService;
 //import com.example.feign.YhFeign;
 import com.example.service.SpringContextUtil;
+import com.example.service.SysNoticeService;
 import com.example.utils.TestYouUtil;
 import com.example.vo.ReqVO;
 import com.example.vo.TestYouVO;
@@ -32,6 +33,15 @@ public class TestYouController {
     @Autowired
     @Qualifier("userService")
     UserService userService;
+
+    @Autowired
+    private SysNoticeService sysNoticeService;
+
+    @RequestMapping("/add")
+    public Object add(){
+        return sysNoticeService.getList();
+    }
+
 
     @RequestMapping("/testYou")
     public Object testYou(String servieName,String methodName,String argClazz) throws ClassNotFoundException {

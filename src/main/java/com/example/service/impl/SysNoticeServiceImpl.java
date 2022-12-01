@@ -1,12 +1,16 @@
 package com.example.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.example.annotation.SimpleCache;
 import com.example.domain.SysNotice;
 import com.example.service.SysNoticeService;
 import com.example.mapper.SysNoticeMapper;
 import com.example.utils.HttpUtil;
+import com.example.vo.Fan;
+import com.example.vo.Page;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -109,6 +113,30 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
         notice.setStatus("0");
         notice.setUrl(url);
         this.save(notice);
+    }
+
+    @Override
+    @SimpleCache(name = "getList")
+    public List<SysNotice> getList() {
+        List<SysNotice> list = new ArrayList<>();
+        SysNotice sysNotice = new SysNotice();
+        sysNotice.setNoticeId(1);
+        list.add(sysNotice);
+        Fan<SysNotice> fan = new Fan<>();
+        fan.setRecords(list);
+        return list;
+    }
+
+    public static void main(String[] args) {
+        SysNotice s = new SysNotice();
+        s.setNoticeId(1);
+        String str = JSONObject.toJSONString(s);
+        Object o = JSON.parseObject(str);
+
+        SysNotice sysNotice = (SysNotice) o;
+
+        System.out.print(sysNotice);
+
     }
 }
 

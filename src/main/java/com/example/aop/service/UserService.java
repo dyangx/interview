@@ -6,4 +6,6 @@ public interface UserService {
     User printUser(User u);
 
     User getUser(User u);
+
+    int add();
 }

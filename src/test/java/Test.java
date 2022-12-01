@@ -83,4 +83,13 @@ public class Test {
         service.scheduleAtFixedRate(thread,0,5, TimeUnit.SECONDS);
         Thread.sleep(1000000);
     }
+
+    @org.junit.Test
+    public void test6(){
+        Random random = new Random();
+        // 随机数序列
+        int seq = random.nextInt((int) 0) + 1;
+
+        System.out.println(seq);
+    }
 }

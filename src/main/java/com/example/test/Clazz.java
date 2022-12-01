@@ -1,6 +1,9 @@
 package com.example.test;
 
+import org.apache.log4j.MDC;
+
 import java.util.BitSet;
+import java.util.Date;
 import java.util.List;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -22,4 +25,21 @@ public class Clazz {
         StringBuffer sb = new StringBuffer();
         return "";
     }
+
+    public static void main(String[] args) throws InterruptedException {
+        MDC.put("1","11");
+        MDC.put("2","22");
+
+        System.out.println(MDC.get("1"));
+        System.out.println(MDC.get("2"));
+
+        new Thread(()->{
+            MDC.put("3","223");
+            System.out.println(MDC.get("3"));
+        }).start();
+
+        Thread.sleep(1000);
+        new Thread(()->{System.out.println(MDC.get("3"));}).start();
+    }
+
 }
