@@ -4,6 +4,7 @@ import com.example.domain.SysNotice;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.example.vo.Fan;
 import com.example.vo.Page;
+import com.example.vo.User;
 
 import java.util.List;
 
@@ -14,6 +15,8 @@ import java.util.List;
 */
 public interface SysNoticeService extends IService<SysNotice> {
 
-    List<SysNotice> getList();
+    List<SysNotice> getList(User u,String s,Integer i);
+
+    void clear(User u,String s,Integer i);
 
 }

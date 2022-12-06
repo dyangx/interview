@@ -39,7 +39,18 @@ public class TestYouController {
 
     @RequestMapping("/add")
     public Object add(){
-        return sysNoticeService.getList();
+        User user = new User();
+        user.setId("2");
+
+        return sysNoticeService.getList(user,"ppp",null);
+    }
+
+    @RequestMapping("/clear")
+    public Object clear(){
+        User user = new User();
+        user.setId("2");
+        sysNoticeService.clear(user,"ppp",null);
+        return null;
     }
 
 
