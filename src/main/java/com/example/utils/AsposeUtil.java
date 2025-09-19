@@ -1,3 +1,4 @@
+/*
 package com.example.utils;
 
 import com.alibaba.fastjson.JSON;
@@ -19,12 +20,14 @@ public class AsposeUtil {
     }
 
     public static Font font = null;
-    /**
+    */
+/**
      *
      * @param templateUrl
      * @param vo
      * @return
-     */
+     *//*
+
     public static byte[] generatePDFRegex(String templateUrl,Object vo) {
         // 验证License 若不验证则转化出的文档会有水印产生
         Assert.isTrue(AsposeLicense.getPdfLicense(),"pdf工具授权失败 ！");
@@ -84,3 +87,4 @@ public class AsposeUtil {
         return value;
     }
 }
+*/

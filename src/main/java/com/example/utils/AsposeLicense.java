@@ -1,12 +1,15 @@
+/*
 package com.example.utils;
 
 import java.io.InputStream;
 
 public class AsposeLicense {
-    /**
+    */
+/**
      * 获取pdf授权
      * @return true有权限 false无权限
-     */
+     *//*
+
     public static boolean getPdfLicense() {
         boolean result = false;
         try {
@@ -15,8 +18,11 @@ public class AsposeLicense {
             aposeLic.setLicense(is);
             result = true;
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace();*/
+/**//*
+
         }
         return result;
     }
 }
+*/

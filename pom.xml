@@ -16,7 +16,7 @@
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>21</java.version>
         <elasticsearch.version>7.3.0</elasticsearch.version>
 
     </properties>
@@ -116,7 +116,7 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.8</version>
+            <version>1.18.36</version>
             <scope>provided</scope>
         </dependency>
 
@@ -193,11 +193,11 @@
             <version>5.2.0</version>
         </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-pdf</artifactId>
            <version>11.0.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.poi</groupId>
@@ -214,6 +214,12 @@
             <groupId>com.aliyun.datahub</groupId>
             <artifactId>aliyun-sdk-datahub</artifactId>
             <version>2.21.6-public</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.elasticsearch</groupId>
@@ -265,6 +271,15 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>21</source>
+                    <target>21</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
             </plugin>
         </plugins>
     </build>

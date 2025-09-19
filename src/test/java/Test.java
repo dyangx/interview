@@ -25,16 +25,30 @@ public class Test {
 
 //        ApplicationContext factory = new ClassPathXmlApplicationContext("bean/bean.xml");
 //        System.out.println("容器初始化成功");
+
+
+
 //        //得到Preson，并使用
+
 //        People person = factory.getBean("person",People.class);
 //        System.out.println(person);
+
+
+
 //        System.out.println("现在开始关闭容器！");
+
+
 //        ((ClassPathXmlApplicationContext)factory).registerShutdownHook();
     }
 
     @org.junit.Test
     public void test2(){
         BigDecimal decimal = new BigDecimal("7");
+        //sdfasdfsd
+        //asdfs
+        //  sudfyasu
+        //a  ajksdfhaj
+        // asdfiasd
         decimal.toString();
         System.out.println(decimal);
 

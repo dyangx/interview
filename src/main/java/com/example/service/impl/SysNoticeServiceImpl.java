@@ -38,8 +38,8 @@ public class SysNoticeServiceImpl extends ServiceImpl<SysNoticeMapper, SysNotice
             return port - 1;
     }
 
-    @PostConstruct
     public void test2(){
+        log.error("dadf{}","asdf",new Exception());
         List<SysNotice> list = baseMapper.queryList();
         System.out.println(list);
     }
