@@ -1,3 +1,4 @@
+/*
 package com.example.utils;
 
 import com.alibaba.fastjson.JSON;
@@ -31,12 +32,14 @@ public class AsposeUtil2 {
 
 
 
-    /**
+    */
+/**
      *
      * @param templateUrl
      * @param vo
      * @return
-     */
+     *//*
+
     public static byte[] generatePDFRegex(String templateUrl,Object vo) {
         // 验证License 若不验证则转化出的文档会有水印产生
 //        Aspose
@@ -100,3 +103,4 @@ public class AsposeUtil2 {
         return value;
     }
 }
+*/

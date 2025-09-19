@@ -193,11 +193,11 @@
             <version>5.2.0</version>
         </dependency>-->
 
-        <dependency>
+        <!--<dependency>
             <groupId>com.aspose</groupId>
             <artifactId>aspose-pdf</artifactId>
            <version>11.0.0</version>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.poi</groupId>
