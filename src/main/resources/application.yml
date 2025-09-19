@@ -6,13 +6,10 @@ server:
 
 
 spring:
-  redis:
-    host: 152.136.190.118
-    port: 63791
-    password: password
-  elasticsearch:
-    rest:
-      uris: 101.35.217.125:9200
+#  redis:
+#    host: 152.136.190.118
+#    port: 63791
+#    password: password
 
   # DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
   datasource:
